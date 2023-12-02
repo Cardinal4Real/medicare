@@ -36,12 +36,12 @@ export default function Search() {
     <div className="searchMain">
 
 
-      <div class="form-group has-search">
-        <span class="fa fa-search form-control-feedback"></span>
-        <div class="input-group">
-          <input name='searchfield' onChange={searchItem} type="text" class="form-control" placeholder="Search medicine" />
-          <span class="input-group-addon" onClick={sortItems}>
-            <i class="fa-sharp fa-solid fa-arrow-down-short-wide fa-2x"></i>
+      <div className="form-group has-search">
+        <span className="fa fa-search form-control-feedback"></span>
+        <div className="input-group">
+          <input name='searchfield' onChange={searchItem} type="text" className="form-control" placeholder="Search medicine" />
+          <span className="input-group-addon" onClick={sortItems}>
+            <i className="fa-sharp fa-solid fa-arrow-down-short-wide fa-2x"></i>
           </span>
         </div>
       </div>

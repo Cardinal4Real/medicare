@@ -57,12 +57,12 @@ export default function Login() {
         <h1 className="h3 mb-3 font-weight-normal">Sign In</h1>
         <div>
           <div className='form-group'>
-          <label for="email" className="sr-only">Email address</label>
-            <input type='email' className="form-control" placeholder="Email address" required="" autofocus="" name='email' onChange={(e) => setEmail(e.target.value)} value={email}></input>
+          <label htmlFor="email" className="sr-only">Email address</label>
+            <input type='email' className="form-control" placeholder="Email address" required="" autoFocus name='email' onChange={(e) => setEmail(e.target.value)} value={email}></input>
           </div>
           <div className='form-group'>
-          <label for="password" className="sr-only">Password</label>
-            <input type='password' className="form-control" placeholder="Password" required="" autofocus="" name='password' onChange={(e) => setPassword(e.target.value)} value={password}></input>
+          <label htmlFor="password" className="sr-only">Password</label>
+            <input type='password' className="form-control" placeholder="Password" required="" name='password' onChange={(e) => setPassword(e.target.value)} value={password}></input>
           </div>
           <button className="btn btn-lg btn-primary btn-block" disabled={!validInput} onClick={handleSubmit}>Sign In</button>
         </div>

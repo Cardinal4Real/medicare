@@ -20,10 +20,10 @@ function App() {
   const [itemToPop,setItemToPop]=useState({});
   const [customer,setCustomer]=useState({});
   const [errorMsg,setErrorMsg]=useState("");
+  const [variant,setVariant]=useState("");
   const [orderedProductList,setOrderedProductList]=useState([]);
   const [displayCartDetails,setDisplayCartDetails]=useState(false);
-  console.log(orderedProductList);
-  console.log("item to pop is",itemToPop);
+
   useEffect(() => {
     axios.get("http://localhost:8080/products/findall")
       .then(result => {
@@ -45,7 +45,7 @@ function App() {
     <MediCareContext.Provider value={{ stock,searchMatch,setsearchMatch,
     showPopUp,setShowPopUp,setItemToPop,itemToPop,setOrderedProductList,
     orderedProductList,customer,setCustomer,setDisplayCartDetails,
-    setErrorMsg }}>
+    setErrorMsg,errorMsg,variant,setVariant }}>
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />

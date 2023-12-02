@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function CartDetails() {
-    const { orderedProductList, setOrderedProductList,setShowPopUp, customer } = useContext(MediCareContext);
+    const { orderedProductList, setOrderedProductList,setShowPopUp, setErrorMsg,setVariant } = useContext(MediCareContext);
     const navigate = useNavigate();
     // let [totalItemsCost, setTotalItemsCost] = useState(0);
     if (orderedProductList.length == 0) {
@@ -19,7 +19,6 @@ export default function CartDetails() {
         return total + (item.orderCost);
     }, 0);
 
-    console.log({ totalItemsCost });
     function removeOrder(item2delete) {
         let deleteItemIndex = orderedProductList.findIndex(orderedItem => orderedItem == item2delete);
         orderedProductList.splice(deleteItemIndex, 1);
@@ -28,14 +27,27 @@ export default function CartDetails() {
     function checkOut() {
         axios.post("http://localhost:8080/save_order", orderedProductList)
             .then(result => {  
+                setOrderedProductList([]);
+                setErrorMsg("Order successfully placed");
+                setVariant("success");
+                setTimeout(()=>{
+                    setErrorMsg("");
+                    setVariant("");
+                },5000)
                 navigate('/customershop');
                 setShowPopUp(false);
-                setOrderedProductList([]);
+
                 //localStorage.clear();
             })
             .catch(error => {
-                //setDisplayMsg("Error connecting to database");
-                navigate('/');  
+                setErrorMsg(error.response.data);
+                setVariant("danger");
+                setTimeout(()=>{
+                    setErrorMsg("");
+                    setVariant("");
+                },5000)
+                navigate('/customershop'); 
+                setShowPopUp(false); 
             });
     }
     let CartInfo = orderedProductList.map(item => {

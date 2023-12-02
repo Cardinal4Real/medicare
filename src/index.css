@@ -146,3 +146,10 @@ div a{
 .input-group-addon i {
   display: block;
 }
+.alert-container {
+  position: fixed;
+  top: 80px; /* Adjust the top position as needed */
+  right: 10px; /* Adjust the right position as needed */
+  z-index: 1000; /* Ensure it appears above other content */
+  width: 300px; /* Adjust the width as needed */
+}

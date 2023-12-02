@@ -20,7 +20,6 @@ export default function Header({ children, show, user, orders }) {
   const popCart = () => {
     setDisplayCartDetails(true);
     setShowPopUp(true);
-    console.log("trying to pop");
   }
 
   return (
