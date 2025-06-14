@@ -3,7 +3,7 @@ name: Deploy React App to S3 and CloudFront
 on:
   push:
     branches:
-      - main # This workflow runs when you push to main
+      - master # This workflow runs when you push to main
 
 jobs:
   deploy:
