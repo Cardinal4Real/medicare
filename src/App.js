@@ -12,6 +12,7 @@ import axios from 'axios';
 import Pop from './components/Pop';
 import PopDisplay from './components/PopDisplay';
 import CartDetails from './components/CartDetails';
+import { baseUrl } from './utilities/Constants';
 
 function App() {
   const [stock, setStock] = useState([]);
@@ -25,7 +26,7 @@ function App() {
   const [displayCartDetails,setDisplayCartDetails]=useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/products/findall")
+    axios.get(`${baseUrl}/products/findall`)
       .then(result => {
         setStock(result.data);
       })

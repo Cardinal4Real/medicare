@@ -7,6 +7,8 @@ import Menu from '../layout/Menu';
 import { MediCareContext } from '../contexts/MediCareContext';
 import Alert from '../components/AlertC';
 import AlertC from '../components/AlertC';
+import { baseUrl } from '../utilities/Constants';
+import Nav from '../layout/Nav';
 
 export default function Login() {
 
@@ -32,7 +34,7 @@ export default function Login() {
     const login = { "username": email, "password": password };
     
 
-    axios.post("http://localhost:8080/login", login)
+    axios.post(`${baseUrl}/login`, login)
       .then(
         result => {
           console.log(result.data)
@@ -50,9 +52,9 @@ export default function Login() {
   }, [email, password]);
   return (
     <div>
-      <Header show={"signin"}>{<Menu></Menu>}</Header>
+      <Header>{<Nav show="signin"></Nav>}</Header>
       {errorMsg&&<AlertC variant="danger" msg={errorMsg}></AlertC>}
-      <div className="form-signin">
+      <div className="container-fluid form-signin content-container">
 
         <h1 className="h3 mb-3 font-weight-normal">Sign In</h1>
         <div>
@@ -68,6 +70,7 @@ export default function Login() {
         </div>
     
       </div>
+      
     </div>
   )
 }

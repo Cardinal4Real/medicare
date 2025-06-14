@@ -8,37 +8,50 @@ import CartDetails from '../components/CartDetails';
 export default function Header({ children, show, user, orders }) {
   const { setShowPopUp, setDisplayCartDetails } = useContext(MediCareContext);
   let prop2Render = null;
-  if (show === "logout") {
-    prop2Render = <Link to="/logout">Logout</Link>;
-  } else if (show === "signin") {
-    prop2Render = <Link to="/signup">Sign Up</Link>;
-  } else if (show === "signup") {
-    prop2Render = <Link to="/login">Login</Link>;
-  } else {
-    prop2Render = <Link to="/login">Log In</Link> / <Link to="/signup">Sign Up</Link>;
+  switch (show) {
+    case "logout":
+      prop2Render = <Link to="/logout">Logout</Link>;
+      break;
+    case "signin":
+      prop2Render = <Link to="/signup">Sign Up</Link>;
+      break;
+    case "signup":
+      prop2Render = <Link to="/login">Login</Link>;
+      break;
+    default:
+      prop2Render = <Link to="/signup">Sign Up</Link>;
+      break;
   }
+
   const popCart = () => {
     setDisplayCartDetails(true);
     setShowPopUp(true);
   }
 
   return (
-    <nav className='navbar bg-danger navbarAux'>
-      <h1>
-        <i className="fa-solid fa-bed-pulse"></i>
-        MediCare
-      </h1>
-      {children}
+    <div className='bg-danger navbarAux'>
+      <div className='container-fluid'>
+        <div className="row">
+          <div className="col-4">
+            <h1>
+              <i className="fa-solid fa-bed-pulse"></i>
+              MediCare
+            </h1>
+          </div>
+          <div className="col-6">
+            {children}
+          </div>
+          <div className="col-2">
+                <div className='loginButton'>{prop2Render}</div>
+                <div className='shoppingCartLink'><a onClick={popCart}>{orders && `Shopping Bag : ` + orders?.length}</a></div>
+          </div>
+        </div>
 
 
-      <div className='flexContainer'>
-        {/* <div className='loginButton1'>{user && `Welcome ` + user.username}</div> */}
-        <div className='loginButton'>{prop2Render}</div>
-        <div className='shoppingCartLink'><a onClick={popCart}>{orders && `Shopping Bag : ` + orders?.length}</a></div>
+
+
       </div>
-
-
-    </nav>
+    </div>
 
   )
 }

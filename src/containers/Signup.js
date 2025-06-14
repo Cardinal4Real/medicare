@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../layout/Header';
 import bcrypt from 'bcryptjs';
 import Menu from '../layout/Menu';
+import { baseUrl } from '../utilities/Constants';
 
 export default function Signup() {
     const [username, setUsername] = useState("");
@@ -34,7 +35,7 @@ export default function Signup() {
         //     } else {
         const signUpDto = { "username": username, "password": password, "contact": contactNumber, "address": address };
 
-        axios.post("http://localhost:8080/save", signUpDto)
+        axios.post(`${baseUrl}/save`, signUpDto)
             .then(result => {
                 console.log(result.data)
                 if (result.data === "Sign-up successful") {

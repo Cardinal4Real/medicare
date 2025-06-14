@@ -153,3 +153,7 @@ div a{
   z-index: 1000; /* Ensure it appears above other content */
   width: 300px; /* Adjust the width as needed */
 }
+.custom-navbar {
+  position: relative;
+  z-index: 1000; /* Set a higher z-index */
+}

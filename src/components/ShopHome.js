@@ -5,6 +5,7 @@ import Search from '../layout/Search';
 import Display from './Display';
 import Menu from '../layout/Menu';
 import AlertC from './AlertC';
+import Nav from '../layout/Nav';
 
 export default function ShopHome() {
   const { stock,searchMatch,orderedProductList,customer,errorMsg,variant } = useContext(MediCareContext);
